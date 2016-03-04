@@ -1,4 +1,6 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var app = express();
 
 // set the port of our application
@@ -10,6 +12,9 @@ app.set('view engine', 'ejs');
 
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -34,6 +39,12 @@ var coordenadas = {
 
 app.get('/coordenadas', function(req, res) {
 	res.send(coordenadas);
+});
+
+app.post('/coordenadas', function (req, res) {
+  coordenadas = req.body;
+  console.log(req.body);	
+  res.send('Got a POST request');
 });
 
 app.listen(port, function() {
