@@ -11,11 +11,18 @@ app.set('view engine', 'ejs');
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 
+var coordenadas = {
+		"latitude": "-7.2496486", 
+		"longitude": "-35.8726948"
+	};
+
 // set the home page route
 app.get('/', function(req, res) {
 
 	// ejs render automatically looks in the views folder
 	res.render('index');
+	res.send(coordenadas);
+
 });
 
 app.listen(port, function() {
