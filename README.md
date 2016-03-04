@@ -1,4 +1,4 @@
-heroku-node
+Where's my employee WS
 ===========
 
-Code for the tutorial by @sevilayha: Deploying Node Apps to Heroku
+Web Service of "Where's my employee" app.
